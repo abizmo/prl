@@ -1,0 +1,27 @@
+version: "3"
+services:
+  incidents-service:
+    build: "./incidents-service"
+    depends_on:
+      - incidents-service-db
+    environment:
+      - DB_URI=mysql://root:password@incidents-service-db/db?charset=UTF8
+    ports:
+      - 7100:7100
+    volumes:
+      - ./incidents-service:/opt/app
+
+  incidents-service-db:
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=db
+    image: mysql:5.7.20
+    ports:
+      - 0.0.0.0:7200:3306
+
+  users-service:
+    build: "./users-service"
+    ports:
+      - 7101:7101
+    volumes:
+      - ./users-service:/opt/app

@@ -1,0 +1,289 @@
+Project PRL {
+  database_type: 'mySQL'
+  note: '''
+
+  '''
+}
+
+Table accident_forms {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table affected_body_zones {
+  _id int [pk, increment]
+  body_zone_id int [ref: > body_zones._id, not null]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  incident_id int [ref: > incidents._id, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table affected_workers {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  incident_id int [ref: > incidents._id, not null]
+  updated_at datetime [default: `now()`, not null]
+  worker_id varchar [ref: > workers._id, not null]
+}
+
+Table body_parts {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table body_zones {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table causative_objects {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  incident_id int [ref: > incidents._id, not null]
+  object_id int [ref: > objects._id, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table contracts {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table fluids {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table hows {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table how_happens {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  how_id int [ref: > hows._id, not null]
+  incident_id int [ref: > incidents._id, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+// Revisar toda la tabla
+Table incidents {
+  _id int [pk, increment]
+  accident_form_id int [ref: > accident_forms._id]
+  affected_worker_id varchar [ref: > workers._id]
+  author_id varchar [ref: > workers._id]
+  body_part_id int [ref: > body_parts._id]
+  brand varchar
+  causative_material varchar
+  causes varchar
+  corrective_meassures varchar
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  description varchar
+  incident_date datetime
+  incident_time datetime
+  nofication_category_id int [ref: > notification_categories._id]
+  notification_classification_id int [ref: > notification_classifications._id]
+  phone int
+  place_id int [ref: > services._id]
+  possibility_repetition_id int [ref: > possibility_repetitions._id]
+  print_date datetime
+  safety_material boolean
+  status_id int [ref: > statuses._id, not null]
+  task boolean
+  updated_at datetime [default: `now()`, not null]
+  workshift_id int [ref: > workshifts._id, not null]
+}
+
+Table injuries {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table sustained_injuries {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  incident_id int [ref: > incidents._id, not null]
+  injury_id int [ref: > injuries._id, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table notification_categories {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table notification_classifications {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table objects {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table polluting_fluids {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  fluid_id int [ref: > fluids._id, not null]
+  incident_id int [ref: > incidents._id, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table possibility_repetitions {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table professional_categories {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table professional_groups {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table used_protections {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  incident_id int [ref: > incidents._id, not null]
+  protection_id int [ref: > protections._id, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table protections {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table services {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table statuses {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table sexes {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table uses {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
+
+Table uses_object {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  incident_id int [ref: > incidents._id, not null]
+  updated_at datetime [default: `now()`, not null]
+  use_id int [ref: > uses._id, not null]
+}
+
+Table witnesses {
+  _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  incident_id int [ref: > incidents._id, not null]
+  notes varchar [null, note: 'if worker is null then this has to be filled']
+  updated_at datetime [default: `now()`, not null]
+  worker_id varchar [ref: > workers._id, null]
+}
+
+// Revisar toda la tabla
+Table workers {
+  _id varchar [pk, increment]
+  birthdate date
+  contract_id int [ref: > contracts._id]
+  duty_shift boolean [default: false]
+  name varchar
+  phone int
+  phone2 int
+  professional_category_id int [ref: > professional_categories._id]
+  professional_group_id int [ref: > professional_groups._id]
+  service_id int [ref: > services._id]
+  sex_id int [ref: > sexes._id]
+  start_at datetime [default: `now()`, not null]
+  updated_at datetime [default: `now()`, not null]
+  workcentre int
+  workplace_id int [ref: > services._id]
+  workshift_id int [ref: > workshifts._id]
+}
+
+Table workshifts {
+ _id int [pk, increment]
+  created_at datetime [default: `now()`, not null]
+  deleted_at datetime
+  title varchar [unique, not null]
+  updated_at datetime [default: `now()`, not null]
+}
