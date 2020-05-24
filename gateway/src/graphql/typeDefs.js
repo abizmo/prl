@@ -17,6 +17,7 @@ const typeDefs = gql`
 
   type Mutation {
     createUserSession(userId: String!, password: String!): UserSession!
+    deleteUserSession(sessionId: ID!): Boolean!
   }
 
   type Query {
