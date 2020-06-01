@@ -3,9 +3,38 @@ import { gql } from "apollo-server";
 const typeDefs = gql`
   scalar Date
 
-  type accidentForm {
+  type Generic {
     _id: Int!
     title: String!
+  }
+
+  type Incident {
+    _id: Int!
+    accidentForm: Generic!
+    authorId: ID!
+    brand: String
+    causativeMaterial: String
+    causes: String
+    correctiveMeassures: String
+    createdAt: Date!
+    deletedAt: Date
+    description: String
+    howId: Int
+    incidentDate: Date!
+    incidentTime: Date
+    notificationCategory: Generic!
+    notificationClassification: Generic!
+    objectId: Int
+    witnessPhone: String
+    placeId: Int!
+    possibilityRepetitionId: Int
+    printAt: Date
+    safetyMaterial: Boolean
+    status: Generic!
+    ownFunctions: Boolean!
+    updatedAt: Date!
+    useId: Int
+    workingTimeId: Int!
   }
 
   type UserSession {
@@ -21,7 +50,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    accidentForms: [accidentForm!]!
+    incidents: [Incident!]!
     userSession(me: Boolean!): UserSession
   }
 `;

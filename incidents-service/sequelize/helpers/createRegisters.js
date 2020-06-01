@@ -1,8 +1,8 @@
-const createRegisters = arr =>
-  arr.map(title => ({
+const createRegisters = (arr) =>
+  arr.map((title) => ({
     createdAt: new Date(),
     title,
-    updatedAt: new Date()
+    updatedAt: new Date(),
   }));
 
 module.exports = createRegisters;

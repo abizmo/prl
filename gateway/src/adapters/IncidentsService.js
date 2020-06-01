@@ -8,4 +8,48 @@ export default class IncidentsService {
 
     return body;
   }
+
+  static async fetchAccidentForm({ accidentFormId }) {
+    const body = await got
+      .get(`${INCIDENTS_SERVICE_URI}/accidentForms/${accidentFormId}`)
+      .json();
+
+    return body;
+  }
+
+  static async fetchAllIncidents() {
+    const body = await got.get(`${INCIDENTS_SERVICE_URI}/incidents`).json();
+
+    return body;
+  }
+
+  static async fetchNotificationCategory({ notificationCategoryId }) {
+    const body = await got
+      .get(
+        `${INCIDENTS_SERVICE_URI}/notificationCategories/${notificationCategoryId}`,
+      )
+      .json();
+
+    return body;
+  }
+
+  static async fetchNotificationClassification({
+    notificationClassificationId,
+  }) {
+    const body = await got
+      .get(
+        `${INCIDENTS_SERVICE_URI}/notificationClassifications/${notificationClassificationId}`,
+      )
+      .json();
+
+    return body;
+  }
+
+  static async fetchStatus({ statusId }) {
+    const body = await got
+      .get(`${INCIDENTS_SERVICE_URI}/statuses/${statusId}`)
+      .json();
+
+    return body;
+  }
 }

@@ -7,18 +7,20 @@ import graphqlClient from "#root/api/graphqlClient";
 import { setSession } from "#root/store/ducks/session";
 
 import AccountDetails from "./AccountDetails";
+import Incidents from "./Incidents";
 
 const Container = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  height: 100%;
   margin: 0 auto;
   width: 100%;
-  height: 100%;
 `;
 
 const Content = styled.div`
   background-color: ${(props) => props.theme.nord6};
   flex: 1;
+  padding: 1rem;
 `;
 
 const Header = styled.div`
@@ -69,7 +71,9 @@ const Root = () => {
         <Header>
           <AccountDetails />
         </Header>
-        <Content>content</Content>
+        <Content>
+          <Incidents />
+        </Content>
       </Container>
     </Wrapper>
   );
