@@ -8,15 +8,15 @@ Status.init(
     _id: {
       allowNull: false,
       primaryKey: true,
-      type: DataTypes.INTEGER.UNSIGNED,
+      type: DataTypes.INTEGER.UNSIGNED
     },
     title: {
       allowNull: false,
-      type: DataTypes.STRING,
-    },
+      type: DataTypes.STRING
+    }
   },
   {
     modelName: "statuses",
-    sequelize,
-  },
+    sequelize
+  }
 );

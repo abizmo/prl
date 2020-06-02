@@ -1,5 +1,5 @@
-export { AccidentForm } from "./accidentForm";
-export { Incident } from "./incident";
-export { NotificationCategory } from "./notificationCategory";
-export { NotificationClassification } from "./notificationClassification";
-export { Status } from "./status";
+export { AccidentForm } from "./AccidentForm";
+export { Incident } from "./Incident";
+export { NotificationCategory } from "./NotificationCategory";
+export { NotificationClassification } from "./NotificationClassification";
+export { Status } from "./Status";
