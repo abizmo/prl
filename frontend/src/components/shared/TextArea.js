@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
-const TextInput = styled.input`
+const TextArea = styled.textarea`
   border: 1px solid ${({ theme }) => theme.nord4};
   box-sizing: border-box;
-  color: ${({ theme }) => theme.nord1};
   flex: 1;
   font-size: 0.9rem;
+  margin-top: 0.3rem;
   min-width: 120px;
   padding: 0.25rem;
+  width: 100%;
 `;
 
-export default TextInput;
+export default TextArea;

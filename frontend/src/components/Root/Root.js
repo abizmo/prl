@@ -1,13 +1,13 @@
 import gql from "graphql-tag";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import graphqlClient from "#root/api/graphqlClient";
 import { setSession } from "#root/store/ducks/session";
 
 import AccountDetails from "./AccountDetails";
-import Incidents from "./Incidents";
+import IncidentsApp from "./IncidentsApp";
 
 const Container = styled.div`
   display: flex;
@@ -18,19 +18,18 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  background-color: ${(props) => props.theme.nord6};
+  background-color: ${props => props.theme.nord6};
   flex: 1;
   padding: 1rem;
 `;
 
 const Header = styled.div`
   align-items: center;
-  background-color: ${(props) => props.theme.nord10};
+  background-color: ${props => props.theme.nord10};
   box-sizing: border-box;
   display: flex;
-  height: 60px;
   justify-content: flex-end;
-  padding: 0 1rem;
+  padding: 1rem;
   width: 100%;
 `;
 
@@ -52,6 +51,7 @@ const query = gql`
 
 const Root = () => {
   const dispatch = useDispatch();
+  const session = useSelector(state => state.session);
   const [initialised, setInitialised] = useState(false);
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const Root = () => {
           <AccountDetails />
         </Header>
         <Content>
-          <Incidents />
+          {session ? <IncidentsApp /> : "Login to view Incidents..."}{" "}
         </Content>
       </Container>
     </Wrapper>

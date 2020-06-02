@@ -1,8 +1,10 @@
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import React from "react";
-import { useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
+
+import Button from "#root/components/shared/Button";
 
 const Incident = ({ incident }) => {
   return (
@@ -68,33 +70,36 @@ const query = gql`
 `;
 
 const Incidents = () => {
+  const history = useHistory();
   const { data, loading } = useQuery(query);
-  const session = useSelector((state) => state.session);
-
-  if (!session) return "Login to view incidents...";
 
   if (loading) return "Loading...";
 
   return (
-    <Table>
-      <Thead>
-        <Tr>
-          <Th>Nº</Th>
-          <Th>Fecha del Incidente</Th>
-          <Th>Estado</Th>
-          <Th>Categoria</Th>
-          <Th>Clasificación</Th>
-          <Th>Fecha de Creación</Th>
-          <Th>Fecha de Edición</Th>
-          <Th>Fecha de Impresión</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {data.incidents.map((incident) => (
-          <Incident key={incident._id} incident={incident} />
-        ))}
-      </Tbody>
-    </Table>
+    <>
+      <Button style={{ marginLeft: 0 }} onClick={() => history.push("/new")}>
+        Nuevo Incidente
+      </Button>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Nº</Th>
+            <Th>Fecha del Incidente</Th>
+            <Th>Estado</Th>
+            <Th>Categoria</Th>
+            <Th>Clasificación</Th>
+            <Th>Fecha de Creación</Th>
+            <Th>Fecha de Edición</Th>
+            <Th>Fecha de Impresión</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {data.incidents.map(incident => (
+            <Incident key={incident._id} incident={incident} />
+          ))}
+        </Tbody>
+      </Table>
+    </>
   );
 };
 
