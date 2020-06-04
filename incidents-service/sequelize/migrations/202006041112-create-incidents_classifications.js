@@ -1,6 +1,6 @@
 module.exports.up = (queryInterface, DataTypes) => {
   return queryInterface.createTable(
-    "affectedWorkers",
+    "incidentsClassifications",
     {
       _id: {
         allowNull: false,
@@ -28,13 +28,13 @@ module.exports.up = (queryInterface, DataTypes) => {
         allowNull: false,
         type: DataTypes.DATE
       },
-      workerId: {
+      notificationClassificationId: {
         allowNull: false,
         references: {
           key: "_id",
-          model: "workers"
+          model: "notificationClassifications"
         },
-        type: DataTypes.UUID
+        type: DataTypes.INTEGER.UNSIGNED
       }
     },
     {

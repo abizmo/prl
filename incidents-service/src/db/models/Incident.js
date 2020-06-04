@@ -18,6 +18,22 @@ Incident.init(
       },
       type: DataTypes.INTEGER.UNSIGNED
     },
+    affectedBodyPartId: {
+      allowNull: false,
+      references: {
+        key: "_id",
+        model: "bodyParts"
+      },
+      type: DataTypes.INTEGER.UNSIGNED
+    },
+    affectedWorkerId: {
+      allowNull: false,
+      references: {
+        key: "_id",
+        model: "workers"
+      },
+      type: DataTypes.UUID
+    },
     authorId: {
       allowNull: false,
       references: {
@@ -70,14 +86,6 @@ Incident.init(
       },
       type: DataTypes.INTEGER.UNSIGNED
     },
-    notificationClassificationId: {
-      allowNull: false,
-      references: {
-        key: "_id",
-        model: "notificationClassifications"
-      },
-      type: DataTypes.INTEGER.UNSIGNED
-    },
     objectId: {
       allowNull: true,
       references: {
@@ -85,6 +93,14 @@ Incident.init(
         model: "objects"
       },
       type: DataTypes.INTEGER.UNSIGNED
+    },
+    othersAffected: {
+      allowNull: true,
+      type: DataTypes.TEXT
+    },
+    witnesses: {
+      allowNull: true,
+      type: DataTypes.TEXT
     },
     witnessPhone: {
       allowNull: true,

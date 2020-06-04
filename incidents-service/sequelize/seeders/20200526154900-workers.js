@@ -15,9 +15,8 @@ const workers = [
     startAt: new Date(2009, 11, 02),
     updatedAt: new Date(),
     headquarterId: 1,
-    workplaceId: 1,
-    workshiftId: 1,
-  },
+    workshiftId: 1
+  }
 ];
 
 module.exports = {
@@ -26,5 +25,5 @@ module.exports = {
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete("workers", null, {});
-  },
+  }
 };

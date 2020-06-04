@@ -13,7 +13,6 @@ const Incident = ({ incident }) => {
       <Td>{incident.incidentDate}</Td>
       <Td>{incident.status.title}</Td>
       <Td>{incident.notificationCategory.title}</Td>
-      <Td>{incident.notificationClassification.title}</Td>
       <Td>{incident.createdAt}</Td>
       <Td>{incident.updatedAt}</Td>
       <Td>{incident.printAt}</Td>
@@ -57,9 +56,6 @@ const query = gql`
       notificationCategory {
         title
       }
-      notificationClassification {
-        title
-      }
       printAt
       status {
         title
@@ -87,7 +83,6 @@ const Incidents = () => {
             <Th>Fecha del Incidente</Th>
             <Th>Estado</Th>
             <Th>Categoria</Th>
-            <Th>Clasificación</Th>
             <Th>Fecha de Creación</Th>
             <Th>Fecha de Edición</Th>
             <Th>Fecha de Impresión</Th>

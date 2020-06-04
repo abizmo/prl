@@ -11,6 +11,8 @@ const typeDefs = gql`
   type Incident {
     _id: Int!
     accidentForm: Generic!
+    affectedBodyPartId: Generic!
+    affectedWorkerId: ID!
     authorId: ID!
     brand: String
     causativeMaterial: String
@@ -23,8 +25,9 @@ const typeDefs = gql`
     incidentDate: Date!
     incidentTime: Date
     notificationCategory: Generic!
-    notificationClassification: Generic!
     objectId: Int
+    othersAffected: String
+    witness: String
     witnessPhone: String
     placeId: Int!
     possibilityRepetitionId: Int

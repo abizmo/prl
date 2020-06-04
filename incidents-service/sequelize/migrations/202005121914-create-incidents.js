@@ -6,155 +6,171 @@ module.exports.up = (queryInterface, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED
       },
       accidentFormId: {
         allowNull: false,
         references: {
           key: "_id",
-          model: "accidentForms",
+          model: "accidentForms"
         },
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED
+      },
+      affectedBodyPartId: {
+        allowNull: false,
+        references: {
+          key: "_id",
+          model: "bodyParts"
+        },
+        type: DataTypes.INTEGER.UNSIGNED
+      },
+      affectedWorkerId: {
+        allowNull: false,
+        references: {
+          key: "_id",
+          model: "workers"
+        },
+        type: DataTypes.UUID
       },
       authorId: {
         allowNull: false,
         references: {
           key: "_id",
-          model: "workers",
+          model: "workers"
         },
-        type: DataTypes.UUID,
+        type: DataTypes.UUID
       },
       brand: {
         allowNull: true,
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT
       },
       causativeMaterial: {
         allowNull: true,
-        type: DataTypes.TEXT,
+        type: DataTypes.TEXT
       },
       causes: {
         allowNull: true,
-        type: DataTypes.TEXT,
+        type: DataTypes.TEXT
       },
       correctiveMeassures: {
         allowNull: true,
-        type: DataTypes.TEXT,
+        type: DataTypes.TEXT
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE,
+        type: DataTypes.DATE
       },
       deletedAt: {
         allowNull: true,
-        type: DataTypes.DATE,
+        type: DataTypes.DATE
       },
       description: {
         allowNull: true,
-        type: DataTypes.TEXT,
+        type: DataTypes.TEXT
       },
       howId: {
         allowNull: true,
         references: {
           key: "_id",
-          model: "hows",
+          model: "hows"
         },
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED
       },
       incidentDate: {
         allowNull: false,
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATEONLY
       },
       incidentTime: {
         allowNull: true,
-        type: DataTypes.TIME,
+        type: DataTypes.TIME
       },
       notificationCategoryId: {
         allowNull: false,
         references: {
           key: "_id",
-          model: "notificationCategories",
+          model: "notificationCategories"
         },
-        type: DataTypes.INTEGER.UNSIGNED,
-      },
-      notificationClassificationId: {
-        allowNull: false,
-        references: {
-          key: "_id",
-          model: "notificationClassifications",
-        },
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED
       },
       objectId: {
         allowNull: true,
         references: {
           key: "_id",
-          model: "objects",
+          model: "objects"
         },
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED
+      },
+      othersAffected: {
+        allowNull: true,
+        type: DataTypes.TEXT
+      },
+      witnesses: {
+        allowNull: true,
+        type: DataTypes.TEXT
       },
       witnessPhone: {
         allowNull: true,
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
       },
       placeId: {
         allowNull: false,
         references: {
           key: "_id",
-          model: "services",
+          model: "services"
         },
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED
       },
       possibilityRepetitionId: {
         allowNull: true,
         references: {
           key: "_id",
-          model: "possibilityRepetitions",
+          model: "possibilityRepetitions"
         },
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED
       },
       printAt: {
         allowNull: true,
-        type: DataTypes.DATE,
+        type: DataTypes.DATE
       },
       safetyMaterial: {
         allowNull: true,
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.BOOLEAN
       },
       statusId: {
         allowNull: false,
         references: {
           key: "_id",
-          model: "statuses",
+          model: "statuses"
         },
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED
       },
       ownFunctions: {
         allowNull: false,
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.BOOLEAN
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE,
+        type: DataTypes.DATE
       },
       useId: {
         allowNull: true,
         references: {
           key: "_id",
-          model: "uses",
+          model: "uses"
         },
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED
       },
       workingTimeId: {
         allowNull: false,
         references: {
           key: "_id",
-          model: "workingTimes",
+          model: "workingTimes"
         },
-        type: DataTypes.INTEGER.UNSIGNED,
-      },
+        type: DataTypes.INTEGER.UNSIGNED
+      }
     },
     {
-      charset: "utf8",
-    },
+      charset: "utf8"
+    }
   );
 };

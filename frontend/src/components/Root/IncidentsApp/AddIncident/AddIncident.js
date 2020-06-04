@@ -323,9 +323,13 @@ const RenderUser = ({ register }) => (
         <Row>
           <Input
             name="placeId"
+            options={[
+              { value: 1, title: "Fraccionamiento" },
+              { value: 2, title: "Informatica" }
+            ]}
             ref={register}
             title="Lugar donde se produjo *"
-            type="text"
+            type="select"
           />
         </Row>
         <Row>

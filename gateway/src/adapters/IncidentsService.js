@@ -26,7 +26,7 @@ export default class IncidentsService {
   static async fetchNotificationCategory({ notificationCategoryId }) {
     const body = await got
       .get(
-        `${INCIDENTS_SERVICE_URI}/notificationCategories/${notificationCategoryId}`,
+        `${INCIDENTS_SERVICE_URI}/notificationCategories/${notificationCategoryId}`
       )
       .json();
 
@@ -34,11 +34,11 @@ export default class IncidentsService {
   }
 
   static async fetchNotificationClassification({
-    notificationClassificationId,
+    notificationClassificationId
   }) {
     const body = await got
       .get(
-        `${INCIDENTS_SERVICE_URI}/notificationClassifications/${notificationClassificationId}`,
+        `${INCIDENTS_SERVICE_URI}/notificationClassifications/${notificationClassificationId}`
       )
       .json();
 
